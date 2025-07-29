@@ -8,30 +8,24 @@ const ADMIN_PASSWORD = "admin123";
 const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("isAdmin") === "true");
   const navigate = useNavigate();
   const { lang } = useLanguage();
 
 
 const location = useLocation();
 
-{location.state && location.state.from && (
-  <div style={{ color: "#b11", marginBottom: 18 }}>
-    الرجاء تسجيل الدخول لمتابعة الوصول للصفحة المطلوبة
-  </div>
-)}
-const handleSubmit = (e) => {
-  e.preventDefault();
-  if (password === ADMIN_PASSWORD) {
-    localStorage.setItem("isAdmin", "true");
-    setLoggedIn(true);
-    setError("");
-    // انتقل تلقائياً لصفحة التعديل مثلاً، أو أي صفحة إدارية
-    navigate('/admin/feedback');
-  } else {
-    setError("Incorrect password");
-  }
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      localStorage.setItem("isAdmin", "true");
+      setLoggedIn(true);
+      setError("");
+      // لا ننتقل تلقائياً، نبقى في نفس الصفحة ليظهر الخيارين
+    } else {
+      setError("Incorrect password");
+    }
+  };
 
   return (
     <div
@@ -121,6 +115,11 @@ const handleSubmit = (e) => {
             <h2 style={{ color: "#a67c52", fontWeight: 800, marginBottom: "2rem" }}>
                   مرحباً  
             </h2>
+            {location.state && location.state.from && (
+              <div style={{ color: "#b11", marginBottom: 18 }}>
+                الرجاء تسجيل الدخول لمتابعة الوصول للصفحة المطلوبة
+              </div>
+            )}
             <button
               style={{
                 width: "100%",

@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Client (React App) - Production
+  client:
+    build:
+      context: ./Client
+      dockerfile: Dockerfile
+    ports:
+      - "80:3000"  # Map to port 80 for production
+    depends_on:
+      - server
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_URL=http://localhost:3001
+    networks:
+      - feedback-network
+    restart: unless-stopped
+
+  # Server (Node.js/Express) - Production
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_DATABASE=${MONGO_DATABASE}
+    networks:
+      - feedback-network
+    restart: unless-stopped
+    volumes:
+      - server-logs:/app/logs
+
+volumes:
+  server-logs:
+
+networks:
+  feedback-network:
+    driver: bridge 
