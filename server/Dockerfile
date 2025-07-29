@@ -1,60 +1,20 @@
-FROM node:alpine AS build
+# Use Node.js 18 as base image
+FROM node:18-alpine
+
+# Set working directory
 WORKDIR /app
+
+# Copy package files
 COPY package*.json ./
-RUN npm install && npm install -g npm@latest
+
+# Install dependencies
+RUN npm install
+
+# Copy source code
 COPY . .
+
+# Expose port 3001
 EXPOSE 3001
-CMD ["node", "index.js"]
 
-
-# Development stage
-#FROM node:22-alpine AS dev
-
-# Define working directory in container
-#WORKDIR /app
-
-# Copy package.json and package-lock.json to container
-#COPY package*.json ./
-#RUN npm install
-
-# Copy all files to container
-#COPY .  .
-
-#CMD ["node", "index.js"]
-
-
-# Production stage
-#FROM node:22-alpine AS prod
-
-# Define working directory in container
-#WORKDIR /app
-
-# Copy package.json and package-lock.json to container
-#COPY package*.json ./
-#RUN npm install
-
-# Copy all files to container
-#COPY .  .
-
-#EXPOSE 3001
-# Start the app in production
-#CMD ["node", "index.js"]
-
-
-# Stage 1: Install dependencies and build
-#FROM node:16-alpine AS builder
-#WORKDIR /app
-
-# Copy and install dependencies
-#COPY package.json ./
-#RUN npm install --production
-
-# Copy all application files
-#COPY . .
-
-
-# Expose backend port
-#EXPOSE 3001
-
-# Start the backend
-#CMD ["node", "index.js"]
+# Start the server
+CMD ["npm", "start"]
