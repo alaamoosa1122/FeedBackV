@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from '../Store/LanguageContext';
+import { useLocation } from "react-router-dom";
 
 const ADMIN_PASSWORD = "admin123";
 
@@ -11,16 +12,26 @@ const AdminLogin = () => {
   const navigate = useNavigate();
   const { lang } = useLanguage();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
-      localStorage.setItem("isAdmin", "true");
-      setLoggedIn(true);
-      setError("");
-    } else {
-      setError("Incorrect password");
-    }
-  };
+
+const location = useLocation();
+
+{location.state && location.state.from && (
+  <div style={{ color: "#b11", marginBottom: 18 }}>
+    الرجاء تسجيل الدخول لمتابعة الوصول للصفحة المطلوبة
+  </div>
+)}
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if (password === ADMIN_PASSWORD) {
+    localStorage.setItem("isAdmin", "true");
+    setLoggedIn(true);
+    setError("");
+    // انتقل تلقائياً لصفحة التعديل مثلاً، أو أي صفحة إدارية
+    navigate('/admin/feedback');
+  } else {
+    setError("Incorrect password");
+  }
+};
 
   return (
     <div

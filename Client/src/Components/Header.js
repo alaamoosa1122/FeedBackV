@@ -17,13 +17,22 @@ const Header = () => {
   const location = useLocation();
   const isRTL = lang === "ar";
 
-  // يرجع true إذا المسار الحالي هو نفس رابط التبويب
+  // تحقق إن الأدمن مسجل دخول
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+
+  // تسجيل الخروج
+  const handleLogout = () => {
+    localStorage.removeItem("isAdmin");
+    navigate("/admin/login");
+  };
+
+  // يستخدم لتحديد التبويب النشط
   const isActive = (pathname) => location.pathname === pathname;
 
   // تغيير اللغة
   const toggleLang = () => setLang(lang === 'en' ? 'ar' : 'en');
 
-  // عنوان الصفحة الحالي
+  // عنوان الصفحة الحالي (للاستخدام مستقبلاً)
   const pageTitle =
     titles[location.pathname]
       ? titles[location.pathname][lang]
@@ -48,7 +57,6 @@ const Header = () => {
         transition: "background 0.25s"
       }}
     >
-      {/* حاوية الداخلية: تعطي حدود للمحتوى ومسافة جانبية */}
       <div
         style={{
           maxWidth: 1220,
@@ -86,14 +94,6 @@ const Header = () => {
           />
         </div>
 
-        {/* (اختياري) العنوان في المنتصف أو بجانب الشعار
-        <span style={{
-          color: "#fff", fontWeight: 900, fontSize: "1.22rem", letterSpacing: "1px"
-        }}>
-          {pageTitle}
-        </span>
-        */}
-
         {/* التبويبات */}
         <nav style={{
           display: 'flex',
@@ -112,13 +112,21 @@ const Header = () => {
             label={lang === "ar" ? 'عربي' : 'English'}
             onClick={toggleLang}
           />
+          {/* زر تسجيل الخروج للأدمن فقط */}
+          {isAdmin && (
+            <NavTab
+              active={false}
+              label={lang === "ar" ? "تسجيل الخروج" : "Logout"}
+              onClick={handleLogout}
+            />
+          )}
         </nav>
       </div>
     </header>
   );
 };
 
-// مكون الزر بشكل تابع/رابط، بنص أبيض في كل الحالات
+// مكون زر/تاب
 function NavTab({ label, active, onClick }) {
   const baseColor = "#fff";
   const baseBg = active ? "rgba(245,245,245,0.18)" : "transparent";

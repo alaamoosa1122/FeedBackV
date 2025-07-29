@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-    FaInstagram,
-    FaArrowUp,
-    FaEnvelope,
-    FaTwitter,
-    FaLinkedin
-} from 'react-icons/fa';
+import { FaInstagram, FaArrowUp, FaEnvelope, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {

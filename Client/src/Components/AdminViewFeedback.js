@@ -18,6 +18,13 @@ const AdminViewFeedback = () => {
   const [openGroups, setOpenGroups] = useState({});
   const [eventsList, setEventsList] = useState([]);
 
+  // حماية الصفحة - فقط إذا موجود isAdmin = true في localStorage
+  useEffect(() => {
+    if (localStorage.getItem('isAdmin') !== 'true') {
+      navigate('/admin/login'); 
+    }
+  }, [navigate])
+
   useEffect(() => {
     fetch('http://localhost:3001/events')
       .then(res => res.json())
