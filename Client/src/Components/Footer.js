@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FaInstagram, FaArrowUp, FaEnvelope, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';  
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'; 
+import { faEnvelope, faArrowUp } from '@fortawesome/free-solid-svg-icons'; 
 import './Footer.css';
 
 const Footer = () => {
@@ -46,16 +49,16 @@ const Footer = () => {
                     <h3 className="footer-title">تواصل معنا</h3>
                     <div className="social-links">
                         <a href="https://x.com/ev_centers" target="_blank" rel="noopener noreferrer" aria-label="X">
-                            <FaTwitter className="social-icon" />
+                            <FontAwesomeIcon icon={faTwitter} className="social-icon" />
                         </a>
                         <a href="https://www.instagram.com/ev_centers/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                            <FaInstagram className="social-icon" />
+                            <FontAwesomeIcon icon={faInstagram} className="social-icon" />
                         </a>
                         <a href="mailto:info@ev-center.com" aria-label="Email">
-                            <FaEnvelope className="social-icon" />
+                            <FontAwesomeIcon icon={faEnvelope} className="social-icon" />
                         </a>
                         <a href="https://www.linkedin.com/company/engineering-village/?trk=tyah&trkInfo=tarId%3A1396603528454%2Ctas%3AEngineering+vil%2Cidx%3A1-1-1" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <FaLinkedin className="social-icon" />
+                            <FontAwesomeIcon icon={faLinkedin} className="social-icon" />
                         </a>
                     </div>
                 </div>
@@ -69,7 +72,7 @@ const Footer = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.google.com/maps/place/%D8%A7%D9%84%D9%82%D8%B1%D9%8A%D8%A9+%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D9%8A%D8%A9%E2%80%AD/@22.7774833,57.5578337,17z/data=!3m1!4b1!4m6!3m5!1s0x3e8efa0b0659d2bf:0xf7de9c66e5e72ea7!8m2!3d22.7774833!4d57.5578337!16s%2Fg%2F11cnch4cfl?entry=ttu" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.google.com/maps/place/%D8%A7%D9%84%D9%82%D8%B1%D9%8A%D8%A9+%D8%A7%D9%84%D9%87%D9%86%D8%AF%D9%8A%D8%A9%E2%80%AD/@22.7774833,57.5578337,17z/data=!3m1!4b1!4m6!3m5!1s0x3e8efa0b0659d2bf:0xf7de9c66e5e72ea7!8m2!3d22.7774833!4d57.5578337!16s%2Fg%2F11cnch4cfl?entry=ttu" target="_blank" rel="noopener noreferrer">
                                 فرع الداخلية - متحف عمان عبر الزمان
                             </a>
                         </li>
@@ -82,7 +85,7 @@ const Footer = () => {
                 onClick={scrollTop}
                 aria-label="Scroll to top"
             >
-                <FaArrowUp />
+                <FontAwesomeIcon icon={faArrowUp} />
             </button>
         </footer>
     );
