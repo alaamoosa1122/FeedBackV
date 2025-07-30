@@ -373,7 +373,7 @@ const Feed = () => {
                       outline: 'none',
                       transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.15s',
                       fontFamily: 'inherit',
-                      width: '85%',
+                      width: '80%',
                       minWidth: '220px',
                     }}
                     onFocus={e => {e.currentTarget.style.border = '2px solid #5f6cff'; e.currentTarget.style.transform = 'scale(1.03)';}}
