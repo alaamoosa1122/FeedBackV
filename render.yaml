@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: feedback-unified
+    name: feedbackev
     env: node
     buildCommand: |
       cd Client && npm install --legacy-peer-deps && npm run build
@@ -12,7 +12,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: REACT_APP_API_URL
-        value: https://feedback-unified.onrender.com
+        value: https://feedbackev.onrender.com
       - key: MONGO_USERNAME
         sync: false
       - key: MONGO_PASSWORD
