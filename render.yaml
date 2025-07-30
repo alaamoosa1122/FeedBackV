@@ -1,21 +1,28 @@
 services:
   - type: web
-    name: feedbackev
+    name: feedbackev-server
     env: node
-    buildCommand: |
-      cd Client && npm install --legacy-peer-deps && npm run build
-      cd ../server && npm install
+    buildCommand: cd server && npm install
     startCommand: cd server && npm run start:prod
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
       - key: NODE_ENV
         value: production
-      - key: REACT_APP_API_URL
-        value: https://feedbackev.onrender.com
       - key: MONGO_USERNAME
         sync: false
       - key: MONGO_PASSWORD
         sync: false
       - key: MONGO_DATABASE
-        sync: false 
+        sync: false
+
+  - type: web
+    name: feedbackev-client
+    env: static
+    buildCommand: cd Client && npm install --legacy-peer-deps && npm run build
+    staticPublishPath: ./Client/build
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: REACT_APP_API_URL
+        value: https://feedbackev-server.onrender.com 
