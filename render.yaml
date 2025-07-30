@@ -1,25 +1,19 @@
 services:
   - type: web
-    name: feedback-client
-    env: static
-    buildCommand: cd Client && npm install --legacy-peer-deps && npm run build
-    staticPublishPath: ./Client/build
-    envVars:
-      - key: NODE_VERSION
-        value: 18.17.0
-      - key: REACT_APP_API_URL
-        value: https://feedback-server.onrender.com
-
-  - type: web
-    name: feedback-server
+    name: feedback-app
     env: node
-    buildCommand: cd server && npm install
+    buildCommand: |
+      cd Client && npm install --legacy-peer-deps && npm run build
+      cd ../server && npm install
     startCommand: cd server && npm run start:prod
+    staticPublishPath: ./Client/build
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
       - key: NODE_ENV
         value: production
+      - key: REACT_APP_API_URL
+        value: https://feedback-app.onrender.com
       - key: MONGO_USERNAME
         sync: false
       - key: MONGO_PASSWORD
