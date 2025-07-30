@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://feedbackv-server1.onrender.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-user-email', 'Content-Length'],
   credentials: true,
@@ -21,6 +21,11 @@ app.options('*', cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Basic route for health check
+app.get("/", (req, res) => {
+  res.json({ message: "Feedback Server is running!" });
+});
 
 // MongoDB Connection
 const con = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@peercluster.xixmr.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority&appName=peerCluster`;
