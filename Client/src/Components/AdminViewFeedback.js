@@ -155,20 +155,20 @@ const AdminViewFeedback = () => {
         onClick={() => navigate('/')}
         style={{
           position: "absolute",
-          top: 100,
-          left: lang === "ar" ? 32 : "auto",
-          right: lang === "ar" ? "auto" : 32,
+          top: "clamp(80px, 12vh, 100px)",
+          left: lang === "ar" ? "clamp(20px, 4vw, 32px)" : "auto",
+          right: lang === "ar" ? "auto" : "clamp(20px, 4vw, 32px)",
           zIndex: 20,
           display: "flex",
           alignItems: "center",
-          gap: 7,
-          padding: "0.6rem 1.3rem 0.6rem 1.1rem",
+          gap: "clamp(5px, 1vw, 7px)",
+          padding: "clamp(0.5rem, 2vw, 0.6rem) clamp(1rem, 2.5vw, 1.3rem) clamp(0.5rem, 2vw, 0.6rem) clamp(0.8rem, 2vw, 1.1rem)",
           border: "none",
           borderRadius: 100,
           background: "rgba(255,255,255,0.85)",
           boxShadow: "0 2px 12px 0 rgba(44,62,80,0.11)",
           fontWeight: 800,
-          fontSize: "1.04rem",
+          fontSize: "clamp(0.9rem, 2.5vw, 1.04rem)",
           color: "#393E46",
           letterSpacing: "0.1px",
           cursor: "pointer",
@@ -234,7 +234,8 @@ const AdminViewFeedback = () => {
             color: "#a67c52",
             fontWeight: 800,
             marginBottom: "2.5rem",
-            marginTop: "85px",  // <--- المسافة بين زر العودة (الهيدر) والعنوان
+            marginTop: "clamp(100px, 15vh, 120px)",  // <--- المسافة بين زر العودة (الهيدر) والعنوان
+            fontSize: "clamp(1.5rem, 4vw, 2rem)"
           }}
         >
           {eventFilter ? `Feedback for: ${eventFilter}` : (lang === 'ar' ? 'كل التقييمات' : 'All Feedback')}

@@ -46,6 +46,7 @@ const AdminAddEvent = () => {
       alignItems: "center",
       margin: 0,
       padding: 0,
+      paddingTop: 'clamp(80px, 12vh, 100px)',
       overflowX: "hidden"
     }}>
       {/* زر العودة أعلى الصفحة */}
@@ -53,20 +54,20 @@ const AdminAddEvent = () => {
         onClick={() => navigate('/admin/login')}
         style={{
           position: "absolute",
-          top: 100,
-          left: lang === "ar" ? 32 : "auto",
-          right: lang === "ar" ? "auto" : 32,
+          top: "clamp(80px, 12vh, 100px)",
+          left: lang === "ar" ? "clamp(20px, 4vw, 32px)" : "auto",
+          right: lang === "ar" ? "auto" : "clamp(20px, 4vw, 32px)",
           zIndex: 20,
           display: "flex",
           alignItems: "center",
-          gap: 7,
-          padding: "0.6rem 1.3rem 0.6rem 1.1rem",
+          gap: "clamp(5px, 1vw, 7px)",
+          padding: "clamp(0.5rem, 2vw, 0.6rem) clamp(1rem, 2.5vw, 1.3rem) clamp(0.5rem, 2vw, 0.6rem) clamp(0.8rem, 2vw, 1.1rem)",
           border: "none",
           borderRadius: 100,
           background: "rgba(255,255,255,0.85)",
           boxShadow: "0 2px 12px 0 rgba(44,62,80,0.11)",
           fontWeight: 800,
-          fontSize: "1.04rem",
+          fontSize: "clamp(0.9rem, 2.5vw, 1.04rem)",
           color: "#393E46",
           letterSpacing: "0.1px",
           cursor: "pointer",
@@ -101,29 +102,78 @@ const AdminAddEvent = () => {
       </button>
 
       <div style={{
-        maxWidth: 400,
+        maxWidth: "clamp(320px, 95vw, 400px)",
         background: "rgba(255,255,255,0.97)",
         borderRadius: "20px",
         boxShadow: "0 8px 40px rgba(30, 64, 175, 0.10)",
-        padding: "3.5rem 3.5rem",
+        padding: "clamp(2rem, 6vw, 3.5rem)",
         border: "2px solid #e9dbc7",
-        minWidth: "320px",
+        minWidth: "clamp(280px, 90vw, 320px)",
         width: "100%",
         textAlign: "center",
       }}>
-      <h2 style={{ textAlign: 'center', color: '#a67c52', marginBottom: 24 }}>إضافة فعالية جديدة</h2>
+      <h2 style={{ 
+        textAlign: 'center', 
+        color: '#a67c52', 
+        marginBottom: 24,
+        fontSize: "clamp(1.5rem, 4vw, 2rem)"
+      }}>إضافة فعالية جديدة</h2>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: 16 }}>
-          <label style={{ display: 'block', marginBottom: 6, fontWeight: 600 }}>اسم الفعالية (عربي):</label>
-          <input type="text" value={eventAr} onChange={e => setEventAr(e.target.value)} style={{ width: '100%', padding: 8, borderRadius: 6, border: '1px solid #ccc' }} required />
+          <label style={{ 
+            display: 'block', 
+            marginBottom: 6, 
+            fontWeight: 600,
+            fontSize: "clamp(1rem, 2.5vw, 1.1rem)"
+          }}>اسم الفعالية (عربي):</label>
+          <input 
+            type="text" 
+            value={eventAr} 
+            onChange={e => setEventAr(e.target.value)} 
+            style={{ 
+              width: '100%', 
+              padding: "clamp(0.6rem, 2vw, 0.8rem)", 
+              borderRadius: 6, 
+              border: '1px solid #ccc',
+              fontSize: "clamp(1rem, 2.5vw, 1.1rem)"
+            }} 
+            required 
+          />
         </div>
         <div style={{ marginBottom: 16 }}>
-          <label style={{ display: 'block', marginBottom: 6, fontWeight: 600 }}>اسم الفعالية (إنجليزي):</label>
-          <input type="text" value={eventEn} onChange={e => setEventEn(e.target.value)} style={{ width: '100%', padding: 8, borderRadius: 6, border: '1px solid #ccc' }} required />
+          <label style={{ 
+            display: 'block', 
+            marginBottom: 6, 
+            fontWeight: 600,
+            fontSize: "clamp(1rem, 2.5vw, 1.1rem)"
+          }}>اسم الفعالية (إنجليزي):</label>
+          <input 
+            type="text" 
+            value={eventEn} 
+            onChange={e => setEventEn(e.target.value)} 
+            style={{ 
+              width: '100%', 
+              padding: "clamp(0.6rem, 2vw, 0.8rem)", 
+              borderRadius: 6, 
+              border: '1px solid #ccc',
+              fontSize: "clamp(1rem, 2.5vw, 1.1rem)"
+            }} 
+            required 
+          />
         </div>
         {error && <div style={{ color: '#c00', marginBottom: 12, textAlign: 'center' }}>{error}</div>}
         {success && <div style={{ color: '#43a047', marginBottom: 12, textAlign: 'center' }}>تمت إضافة الفعالية بنجاح</div>}
-        <button type="submit" style={{ width: '100%', background: '#a67c52', color: '#fff', border: 'none', borderRadius: 6, padding: '0.7rem', fontWeight: 700, fontSize: '1.1rem', cursor: 'pointer' }}>إضافة الفعالية</button>
+        <button type="submit" style={{ 
+          width: '100%', 
+          background: '#a67c52', 
+          color: '#fff', 
+          border: 'none', 
+          borderRadius: 6, 
+          padding: "clamp(0.6rem, 2vw, 0.7rem)", 
+          fontWeight: 700, 
+          fontSize: "clamp(1rem, 2.5vw, 1.1rem)", 
+          cursor: 'pointer' 
+        }}>إضافة الفعالية</button>
       </form>
       </div>
     </div>

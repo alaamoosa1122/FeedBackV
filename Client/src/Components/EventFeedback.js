@@ -30,7 +30,15 @@ const EventFeedback = () => {
   }, [eventName]);
 
   return (
-    <div style={{ maxWidth: 700, margin: '2rem auto', background: '#fff', borderRadius: 16, boxShadow: '0 2px 12px #eee', padding: '2.5rem 1.5rem' }}>
+    <div style={{ 
+      maxWidth: 700, 
+      margin: '2rem auto', 
+      marginTop: 'clamp(100px, 15vh, 120px)',
+      background: '#fff', 
+      borderRadius: 16, 
+      boxShadow: '0 2px 12px #eee', 
+      padding: '2.5rem 1.5rem' 
+    }}>
       <h2 style={{ textAlign: 'center', color: '#1a4d8f', marginBottom: 24 }}>تقييمات الفعالية: {eventName || ''}</h2>
       {loading && <div style={{ textAlign: 'center', color: '#888' }}>جاري التحميل...</div>}
       {error && <div style={{ textAlign: 'center', color: '#c00', marginBottom: 16 }}>{error}</div>}

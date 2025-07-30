@@ -28,7 +28,7 @@ const App = () => {
   
       <Router>
         <Header onAdminClick={() => setShowAdminLogin(true)} />
-        <Container fluid>
+        <Container fluid style={{ paddingTop: 'clamp(80px, 12vh, 100px)' }}>
           {/* <Row>
             {user ? <Header /> : null}
           </Row> */}

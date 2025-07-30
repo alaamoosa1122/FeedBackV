@@ -51,7 +51,7 @@ const Header = () => {
         background: 'rgba(40,40,46,0.36)',
         borderBottom: '1.7px solid #ece2c6',
         boxShadow: '0 2px 18px 0 rgba(199, 182, 148, 0.07)',
-        minHeight: 76,
+        minHeight: 'clamp(50px, 8vh, 60px)',
         display: 'block',
         fontFamily: 'Tajawal, Cairo, Roboto, Arial, sans-serif',
         transition: "background 0.25s"
@@ -61,12 +61,14 @@ const Header = () => {
         style={{
           maxWidth: 1220,
           margin: "0 auto",
-          padding: "0 32px",
-          height: 76,
+          padding: "clamp(0.5rem, 3vw, 2rem)",
+          height: 'clamp(50px, 8vh, 60px)',
           display: 'flex',
           flexDirection: isRTL ? "row-reverse" : "row",
           alignItems: 'center',
           justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '0.5rem',
         }}
       >
         {/* الشعار */}
@@ -74,7 +76,7 @@ const Header = () => {
           style={{
             display: 'flex', alignItems: 'center',
             cursor: "pointer",
-            minWidth: 110,
+            minWidth: 'clamp(80px, 15vw, 110px)',
           }}
           onClick={() => navigate("/")}
           tabIndex={0}
@@ -84,7 +86,7 @@ const Header = () => {
             src={logo}
             alt="Engineering Village Logo"
             style={{
-              height: 41,
+              height: 'clamp(30px, 6vw, 41px)',
               width: "auto",
               filter: "drop-shadow(0 1px 2px #d4af6e34)",
               transition: "transform 0.18s",
@@ -98,9 +100,10 @@ const Header = () => {
         <nav style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '0.7rem',
-          minWidth: 180,
-          justifyContent: isRTL ? "flex-start" : "flex-end"
+          gap: 'clamp(0.3rem, 1vw, 0.7rem)',
+          minWidth: 'clamp(120px, 20vw, 180px)',
+          justifyContent: isRTL ? "flex-start" : "flex-end",
+          flexWrap: 'wrap',
         }}>
           <NavTab
             active={isActive("/admin/login")}
@@ -109,9 +112,10 @@ const Header = () => {
           />
           <NavTab
             active={false}
-            label={lang === "ar" ? 'عربي' : 'English'}
+            label={lang === "ar" ? "English" : "عربي"}
             onClick={toggleLang}
           />
+
           {/* زر تسجيل الخروج للأدمن فقط */}
           {isAdmin && (
             <NavTab
@@ -143,14 +147,15 @@ function NavTab({ label, active, onClick }) {
         outline: "none",
         color: baseColor,
         fontWeight: active ? 900 : 700,
-        fontSize: "1.08rem",
-        padding: "0.36rem 1.11rem",
+        fontSize: "clamp(0.9rem, 2.5vw, 1.08rem)",
+        padding: "clamp(0.25rem, 1vw, 0.36rem) clamp(0.8rem, 2vw, 1.11rem)",
         borderRadius: 24,
         transition: "background 0.14s, color 0.16s",
         cursor: "pointer",
         boxShadow: active ? "0 1px 7px #f4e9c12a" : "none",
         textShadow: "0 1px 8px #1114",
         position: "relative",
+        whiteSpace: 'nowrap',
       }}
       onMouseOver={e => {
         e.currentTarget.style.backgroundColor = hoverBg;

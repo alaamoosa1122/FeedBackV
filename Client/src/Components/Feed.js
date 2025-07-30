@@ -194,7 +194,7 @@ const Feed = () => {
 
   if (submitted) {
     return (
-      <Container style={{ minHeight: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Container style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div style={{ background: '#fff', borderRadius: 16, boxShadow: '0 2px 12px #eee', padding: '2.5rem 2rem', textAlign: 'center' }}>
           <h2 style={{ color: '#43a047', marginBottom: 12 }}>
             {t[lang].thankYou}
@@ -210,18 +210,20 @@ const Feed = () => {
      {showThankYou && (
           <div style={{
             position: 'fixed',
-            top: 80, // بدل 24
+            top: '80px',
             left: '50%',
             transform: 'translateX(-50%)',
             background: '#43a047',
             color: '#fff',
-            padding: '1rem 2.5rem',
-            borderRadius: 12,
+            padding: '1rem 2rem',
+            borderRadius: '12px',
             boxShadow: '0 2px 12px #aaa',
             zIndex: 9999,
-            fontSize: '1.2rem',
+            fontSize: 'clamp(1rem, 4vw, 1.2rem)',
             fontWeight: 700,
             letterSpacing: '0.5px',
+            maxWidth: '90vw',
+            textAlign: 'center',
           }}>
             {t[lang].thankYou}
           </div>
@@ -233,20 +235,37 @@ const Feed = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          minHeight: '90vh',
+          minHeight: '100vh',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           fontFamily: 'Tajawal, Cairo, Roboto, Arial, sans-serif',
           color: '#232336',
+          padding: '1rem',
         }}
       >
-        {/* Small logo at the top left */}
-        
-        <Row className="justify-content-center" style={{ position: 'relative', zIndex: 1 }}>
-          <Col md={8} lg={6}>
+        <Row className="justify-content-center w-100 mx-auto" style={{
+            position: 'relative',
+            zIndex: 1,
+            maxWidth: '80%',
+            width: '80%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingLeft:'1rem',
+            paddingRight:'5rem',
+  
+}}>
+          <Col xs={12} sm={11} md={9} lg={7} xl={6} xxl={5} style={{
+              maxWidth: '80%',
+              width: '80%',
+              margin:'0 auto',
+              padding:'0 auto',
+              paddingTop: 'clamp(2rem, 8vh, 5.5rem)',
+              
+            }}>
             {/* Box for title and subtitle */}
             <div
+              className="title-box"
               style={{
                 background: 'linear-gradient(120deg, #f7f3ff 0%, #e3f0ff 100%)',
                 borderRadius: '18px',
@@ -255,14 +274,13 @@ const Feed = () => {
                 marginBottom: '0.7rem',
                 textAlign: 'center',
                 fontFamily: 'Tajawal, Cairo, Roboto, Arial, sans-serif',
-                maxWidth: '1200px',
-                minWidth: '500px',
                 border: '1.5px solid #d1c4e9',
-                marginTop: '5.5rem',
+                marginTop: 'clamp(2rem, 8vh, 5.5rem)',
+                width: '100%',
               }}
             >
-              <div style={{
-                fontSize:'2.3rem',
+              <div className="title-text" style={{
+                fontSize:'clamp(1.5rem, 6vw, 2.3rem)',
                 fontWeight:900,
                 color:'#4b2996',
                 letterSpacing:'1.2px',
@@ -271,6 +289,7 @@ const Feed = () => {
                 marginBottom:'0.2rem',
                 position:'relative',
                 display:'inline-block',
+                lineHeight: '1.2',
               }}>
                 <span role="img" aria-label="party"></span> {t[lang].formTitle} <span role="img" aria-label="sparkle"></span>
                 <div style={{
@@ -282,14 +301,15 @@ const Feed = () => {
                   opacity:0.7,
                 }}></div>
               </div>
-              <div style={{
+              <div className="subtitle-text" style={{
                 color:'#1a4d8f',
                 fontWeight:700,
-                fontSize:'1.18rem',
+                fontSize:'clamp(1rem, 3vw, 1.18rem)',
                 marginTop:'0.7rem',
                 letterSpacing:'0.3px',
                 fontFamily:'inherit',
                 textShadow:'0 1px 4px #b3c6e744',
+                lineHeight: '1.4',
               }}>
                 {lang === 'ar'
                   ? 'كل كلمة منك تصنع فرق كبير في فعالياتنا القادمة 🎯'
@@ -298,6 +318,7 @@ const Feed = () => {
             </div>
             {/* End box */}
             <div
+              className="form-container"
               style={{
                 background: 'rgba(255, 255, 255, 0.2)',
                 borderRadius: '18px',
@@ -305,14 +326,13 @@ const Feed = () => {
                 padding: '2rem',
                 border: '1px solid rgba(227, 212, 163, 0.8)',
                 marginBottom: '2rem',
-                minWidth: '500px',
-                maxWidth: '1200px',
                 marginTop: 0,
                 backdropFilter: 'blur(8px)',
                 fontFamily: 'Tajawal, Cairo, Roboto, Arial, sans-serif',
                 position: 'relative',
                 overflow: 'hidden',
                 color: '#232336',
+                width: '100%',
               }}
             >
               <Form onSubmit={handleSubmit}>
@@ -320,11 +340,11 @@ const Feed = () => {
                   <div style={{ color: '#c00', fontWeight: 700, textAlign: 'center', marginTop: 12 }}>{submitError}</div>
                 )}
                 <FormGroup>
-                  <Label for="name" style={{
+                  <Label for="name" className="form-label" style={{
                     fontWeight:700,
                     color:'#2d1976',
                     marginBottom:'0.2rem',
-                    fontSize:'1.15rem',
+                    fontSize:'clamp(1rem, 3vw, 1.15rem)',
                     letterSpacing:'0.2px',
                     display:'flex',
                     alignItems:'center',
@@ -341,12 +361,13 @@ const Feed = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    className="form-input"
                     style={{
                       background: 'rgba(255,255,255,0.99)',
                       border: '2px solid #ffb86c',
                       borderRadius: '18px',
-                      padding: '1.15rem 1.2rem',
-                      fontSize: '1.13rem',
+                      padding: 'clamp(0.8rem, 2vw, 1.15rem) clamp(1rem, 2.5vw, 1.2rem)',
+                      fontSize: 'clamp(1rem, 2.5vw, 1.13rem)',
                       marginBottom: '1.2rem',
                       boxShadow: '0 2px 12px rgba(255, 107, 203, 0.10)',
                       outline: 'none',
@@ -365,11 +386,11 @@ const Feed = () => {
                   )}
                 </FormGroup>
                 <FormGroup>
-                  <Label for="number" style={{
+                  <Label for="number" className="form-label" style={{
                     fontWeight: 700,
                     color: '#2d1976',
                     marginBottom: '0.2rem',
-                    fontSize: '1.15rem',
+                    fontSize: 'clamp(1rem, 3vw, 1.15rem)',
                     letterSpacing: '0.2px',
                     display: 'flex',
                     alignItems: 'center',
@@ -386,19 +407,20 @@ const Feed = () => {
                     value={formData.number}
                     onChange={handleChange}
                     required
+                    className="form-input"
                     style={{
                       background: 'rgba(255,255,255,0.99)',
                       border: '2px solid #ffb86c',
                       borderRadius: '18px',
-                      padding: '1.15rem 1.2rem',
-                      fontSize: '1.13rem',
+                      padding: 'clamp(0.8rem, 2vw, 1.15rem) clamp(1rem, 2.5vw, 1.2rem)',
+                      fontSize: 'clamp(1rem, 2.5vw, 1.13rem)',
                       marginBottom: '1.2rem',
                       boxShadow: '0 2px 12px rgba(255, 107, 203, 0.10)',
                       outline: 'none',
                       transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.15s',
                       fontFamily: 'inherit',
-                      width: '85%',
-                      minWidth: '220px',
+                      width: '90%',
+                      maxWidth: '400px',
                     }}
                     onFocus={e => {
                       e.currentTarget.style.border = '2px solid #5f6cff';
@@ -423,11 +445,11 @@ const Feed = () => {
                   )}
                 </FormGroup>
                 <FormGroup>
-                  <Label for="event" style={{
+                  <Label for="event" className="form-label" style={{
                     fontWeight:700,
                     color:'#1a4d8f',
                     marginBottom:'0.3rem',
-                    fontSize:'1.15rem',
+                    fontSize:'clamp(1rem, 3vw, 1.15rem)',
                     letterSpacing:'0.2px',
                     display:'flex',
                     alignItems:'center',
@@ -443,19 +465,20 @@ const Feed = () => {
                     value={formData.event}
                     onChange={handleChange}
                     required
+                    className="form-input"
                     style={{
                       background: 'rgba(255,255,255,0.99)',
                       border: '2px solid #ffb86c',
                       borderRadius: '18px',
-                      padding: '1.15rem 1.2rem',
-                      fontSize: '1.13rem',
+                      padding: 'clamp(0.8rem, 2vw, 1.15rem) clamp(1rem, 2.5vw, 1.2rem)',
+                      fontSize: 'clamp(1rem, 2.5vw, 1.13rem)',
                       marginBottom: '1.2rem',
                       boxShadow: '0 2px 12px rgba(255, 107, 203, 0.10)',
                       outline: 'none',
                       transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.15s',
                       fontFamily: 'inherit',
-                      width: '85%',
-                      minWidth: '220px',
+                      width: '100%',
+                      maxWidth: '400px',
                     }}
                     onFocus={e => {e.currentTarget.style.border = '2px solid #5f6cff'; e.currentTarget.style.transform = 'scale(1.03)';}}
                     onBlur={e => {e.currentTarget.style.border = '2px solid #ffb86c'; e.currentTarget.style.transform = 'scale(1)';}}
@@ -474,11 +497,11 @@ const Feed = () => {
                   )}
                 </FormGroup>
                 <FormGroup>
-                  <Label for="rating" style={{
+                  <Label for="rating" className="form-label" style={{
                     fontWeight:700,
                     color:'#e67e22',
                     marginBottom:'0.3rem',
-                    fontSize:'1.15rem',
+                    fontSize:'clamp(1rem, 3vw, 1.15rem)',
                     letterSpacing:'0.2px',
                     display:'flex',
                     alignItems:'center',
@@ -487,13 +510,22 @@ const Feed = () => {
                   }}>
                     <span role="img" aria-label="star">⭐</span> {t[lang].rating}
                   </Label>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.2rem', userSelect: 'none' }}>
+                  <div className="star-rating" style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: 'clamp(0.3rem, 1vw, 0.5rem)', 
+                    marginBottom: '1.2rem', 
+                    userSelect: 'none',
+                    flexWrap: 'wrap',
+                    justifyContent: 'left'
+                  }}>
                     {[1,2,3,4,5].map((star) => (
                       <span
                         key={star}
                         onClick={() => handleStarClick(star)}
+                        className="star-button"
                         style={{
-                          fontSize: '2.1rem',
+                          fontSize: 'clamp(1.5rem, 5vw, 2.1rem)',
                           cursor: 'pointer',
                           color: star <= formData.rating ? '#ffb400' : '#e0e0e0',
                           transition: 'color 0.2s',
@@ -513,11 +545,11 @@ const Feed = () => {
                   )}
                 </FormGroup>
                 <FormGroup>
-                  <Label for="comments" style={{
+                  <Label for="comments" className="form-label" style={{
                     fontWeight:700,
                     color:'#2d1976',
                     marginBottom:'0.3rem',
-                    fontSize:'1.15rem',
+                    fontSize:'clamp(1rem, 3vw, 1.15rem)',
                     letterSpacing:'0.2px',
                     display:'flex',
                     alignItems:'center',
@@ -534,19 +566,21 @@ const Feed = () => {
                     rows="4"
                     value={formData.comments}
                     onChange={handleChange}
+                    className="form-input"
                     style={{
                       background: 'rgba(255,255,255,0.99)',
                       border: '2px solid #ff6bcb',
                       borderRadius: '18px',
-                      padding: '1.15rem 1.2rem',
-                      fontSize: '1.13rem',
+                      padding: 'clamp(0.8rem, 2vw, 1.15rem) clamp(1rem, 2.5vw, 1.2rem)',
+                      fontSize: 'clamp(1rem, 2.5vw, 1.13rem)',
                       marginBottom: '1.2rem',
                       boxShadow: '0 2px 12px rgba(255, 107, 203, 0.10)',
                       outline: 'none',
                       transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.15s',
                       fontFamily: 'inherit',
-                      width: '85%',
-                      minWidth: '220px',
+                      width: '90%',
+                      maxWidth: '400px',
+                      resize: 'vertical',
                     }}
                     onFocus={e => {e.currentTarget.style.border = '2px solid #ffb86c'; e.currentTarget.style.transform = 'scale(1.03)';}}
                     onBlur={e => {e.currentTarget.style.border = '2px solid #ff6bcb'; e.currentTarget.style.transform = 'scale(1)';}}
@@ -560,14 +594,14 @@ const Feed = () => {
                 <Button
                   color="primary"
                   block
-                  className="mt-3"
+                  className="mt-3 submit-button"
                   style={{
                     background: 'linear-gradient(90deg, #2d1976 0%, #1a4d8f 100%)',
                     border: 'none',
                     borderRadius: '999px',
                     fontWeight: 900,
-                    fontSize: '1.35rem',
-                    padding: '1.15rem 0',
+                    fontSize: 'clamp(1.1rem, 3vw, 1.35rem)',
+                    padding: 'clamp(0.8rem, 2vw, 1.15rem) 0',
                     boxShadow: '0 6px 24px rgba(45,25,118,0.10)',
                     letterSpacing: '1px',
                     transition: 'background 0.2s, box-shadow 0.2s, transform 0.15s',
@@ -575,7 +609,8 @@ const Feed = () => {
                     marginTop: '1.7rem',
                     fontFamily: 'inherit',
                     textShadow: '0 1px 2px rgba(45,25,118,0.10)',
-                    width: '85%',
+                    width: '100%',
+                    maxWidth: '400px',
                     display: 'block',
                     marginLeft: 'auto',
                     marginRight: 'auto',
