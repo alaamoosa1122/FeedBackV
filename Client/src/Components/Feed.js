@@ -56,7 +56,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+        const apiUrl = process.env.REACT_APP_API_URL;
         const res = await fetch(`${apiUrl}/api/events`);
         if (!res.ok) throw new Error('Failed to fetch events');
         const data = await res.json();
@@ -159,7 +159,7 @@ const Feed = () => {
     if (!isValid) return;
 
     try {
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const apiUrl = process.env.REACT_APP_API_URL;
       const res = await fetch(`${apiUrl}/api/feedback`, {
         method: 'POST',
         headers: {
