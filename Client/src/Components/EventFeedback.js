@@ -16,7 +16,7 @@ const EventFeedback = () => {
       setLoading(false);
       return;
     }
-            fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/feedback`)
+            fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/feedback`)
       .then(res => res.json())
       .then(data => {
         const filtered = data.filter(fb => fb.event === eventName);

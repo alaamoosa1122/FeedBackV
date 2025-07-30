@@ -26,7 +26,7 @@ const AdminViewFeedback = () => {
   }, [navigate])
 
   useEffect(() => {
-            fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/events`)
+            fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/events`)
       .then(res => res.json())
       .then(setEventsList)
       .catch(() => setEventsList([]));
@@ -35,7 +35,7 @@ const AdminViewFeedback = () => {
   useEffect(() => {
     setLoading(true);
     setFetchError("");
-            fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/feedback`)
+            fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/feedback`)
       .then(res => res.json())
       .then(data => {
         let all = data;
@@ -57,7 +57,7 @@ const AdminViewFeedback = () => {
     if (!window.confirm(lang === 'ar' ? 'هل أنت متأكد من حذف هذا التقييم؟' : 'Are you sure you want to delete this feedback?')) return;
     const fbToDelete = feedbacks[idx];
     try {
-              const res = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/feedback/${fbToDelete._id}`, { method: 'DELETE' });
+              const res = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/feedback/${fbToDelete._id}`, { method: 'DELETE' });
       if (!res.ok) {
         const data = await res.json();
         setDeleteError(data.msg || (lang === 'ar' ? 'فشل الحذف' : 'Delete failed'));
@@ -82,7 +82,7 @@ const AdminViewFeedback = () => {
       const promises = feedbacks
         .filter(fb => fb.event === eventName)
         .map(fb =>
-          fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/feedback/${fb._id}`, { method: 'DELETE' })
+          fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/feedback/${fb._id}`, { method: 'DELETE' })
         );
       await Promise.all(promises);
 
@@ -91,7 +91,7 @@ const AdminViewFeedback = () => {
         (lang === 'ar' ? ev.ar : ev.en) === eventName
       );
       if (eventObj) {
-        const res = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/events/${eventObj._id}`, { method: 'DELETE' });
+        const res = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/events/${eventObj._id}`, { method: 'DELETE' });
         if (!res.ok) throw new Error('حدث خطأ عند حذف الفعالية!');
       }
 
