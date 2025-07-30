@@ -14,7 +14,7 @@ services:
     name: feedback-server
     env: node
     buildCommand: cd server && npm install
-    startCommand: cd server && npm start
+    startCommand: cd server && npm run start:prod
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
