@@ -10,7 +10,7 @@ import {
   Col,
 } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-import img from '../Components/img3.JPG';
+import img from '../Components/image3.png';
 import { useLanguage } from '../Store/LanguageContext';
 import logo from '../Components/lo.png';
 
@@ -342,7 +342,7 @@ const Feed = () => {
                 <FormGroup>
                   <Label for="name" className="form-label" style={{
                     fontWeight:700,
-                    color:'#2d1976',
+                    color:'#ffffff',
                     marginBottom:'0.2rem',
                     fontSize:'clamp(1rem, 3vw, 1.15rem)',
                     letterSpacing:'0.2px',
@@ -350,6 +350,7 @@ const Feed = () => {
                     alignItems:'center',
                     gap:'0.3rem',
                     fontFamily:'inherit',
+                    textShadow: '0 1px 3px rgba(0,0,0,0.3)',
                   }}>
                     <span role="img" aria-label="user">🧑</span> {t[lang].yourName}
                   </Label>
@@ -388,7 +389,7 @@ const Feed = () => {
                 <FormGroup>
                   <Label for="number" className="form-label" style={{
                     fontWeight: 700,
-                    color: '#2d1976',
+                    color: '#ffffff',
                     marginBottom: '0.2rem',
                     fontSize: 'clamp(1rem, 3vw, 1.15rem)',
                     letterSpacing: '0.2px',
@@ -396,6 +397,7 @@ const Feed = () => {
                     alignItems: 'center',
                     gap: '0.3rem',
                     fontFamily: 'inherit',
+                    textShadow: '0 1px 3px rgba(0,0,0,0.3)',
                   }}>
                     <span role="img" aria-label="phone">📱</span> {t[lang].yourPhone}
                   </Label>
@@ -447,7 +449,7 @@ const Feed = () => {
                 <FormGroup>
                   <Label for="event" className="form-label" style={{
                     fontWeight:700,
-                    color:'#1a4d8f',
+                    color:'#ffffff',
                     marginBottom:'0.3rem',
                     fontSize:'clamp(1rem, 3vw, 1.15rem)',
                     letterSpacing:'0.2px',
@@ -455,6 +457,7 @@ const Feed = () => {
                     alignItems:'center',
                     gap:'0.3rem',
                     fontFamily:'inherit',
+                    textShadow: '0 1px 3px rgba(0,0,0,0.3)',
                   }}>
                     <span role="img" aria-label="event">📅</span> {t[lang].eventName}
                   </Label>
@@ -547,7 +550,7 @@ const Feed = () => {
                 <FormGroup>
                   <Label for="comments" className="form-label" style={{
                     fontWeight:700,
-                    color:'#2d1976',
+                    color:'#ffffff',
                     marginBottom:'0.3rem',
                     fontSize:'clamp(1rem, 3vw, 1.15rem)',
                     letterSpacing:'0.2px',
@@ -555,6 +558,7 @@ const Feed = () => {
                     alignItems:'center',
                     gap:'0.3rem',
                     fontFamily:'inherit',
+                    textShadow: '0 1px 3px rgba(0,0,0,0.3)',
                   }}>
                     <span role="img" aria-label="comment">💬</span> {t[lang].comments}
                   </Label>
