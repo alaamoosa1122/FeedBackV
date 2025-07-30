@@ -6,7 +6,6 @@ services:
       cd Client && npm install --legacy-peer-deps && npm run build
       cd ../server && npm install
     startCommand: cd server && npm run start:prod
-    staticPublishPath: ./Client/build
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
