@@ -5,7 +5,7 @@ services:
     buildCommand: |
       cd client && npm install && npm run build
       cd ../server && npm install
-    startCommand: node index.js
+    startCommand: cd server && node index.js
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
