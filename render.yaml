@@ -19,7 +19,7 @@ services:
   - type: web
     name: feedbackev
     env: static
-    buildCommand: ls -la && cd client && npm install && npm run build
+    buildCommand: cd client && npm install && npm run build && cd ../server && npm install
     staticPublishPath: ./client/build
     envVars:
       - key: NODE_VERSION
