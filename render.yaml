@@ -1,9 +1,11 @@
 services:
   - type: web
-    name: feedbackev-server
+    name: feedbackev
     env: node
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm run start:prod
+    buildCommand: |
+      cd client && npm install && npm run build
+      cd ../server && npm install
+    startCommand: node index.js
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
@@ -15,14 +17,3 @@ services:
         sync: false
       - key: MONGO_DATABASE
         sync: false
-
-  - type: web
-    name: feedbackev
-    env: static
-    buildCommand: cd client && npm install && npm run build && cd ../server && npm install
-    staticPublishPath: ./client/build
-    envVars:
-      - key: NODE_VERSION
-        value: 18.17.0
-      - key: REACT_APP_API_URL
-        value: http://localhost:3001 
