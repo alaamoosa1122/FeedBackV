@@ -27,15 +27,15 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from React build
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const clientBuildPath = path.join(__dirname, '../Client/build');
+const clientBuildPath = path.join(__dirname, '../client/build');
 
 // Check if client build exists and serve it
 import fs from 'fs';
 if (fs.existsSync(clientBuildPath)) {
   app.use(express.static(clientBuildPath));
-  console.log('✅ Client build found and served');
+  console.log('✅ client build found and served');
 } else {
-  console.log('⚠️ Client build not found, serving API only');
+  console.log('⚠️ client build not found, serving API only');
 }
 
 // API health check
@@ -127,11 +127,11 @@ app.delete("/api/events/:id", async (req, res) => {
 
 // Catch all handler: send back React's index.html file for any non-API routes
 app.get('*', (req, res) => {
-  const indexPath = path.join(__dirname, '../Client/build', 'index.html');
+  const indexPath = path.join(__dirname, '../client/build', 'index.html');
   if (fs.existsSync(indexPath)) {
     res.sendFile(indexPath);
   } else {
-    res.json({ message: "API Server is running. Client build not found." });
+    res.json({ message: "API Server is running. client build not found." });
   }
 });
 

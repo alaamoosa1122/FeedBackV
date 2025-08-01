@@ -186,7 +186,7 @@ const location = useLocation();
                 onChange={e => setPassword(e.target.value)}
                 placeholder="Enter admin password"
                 style={{
-                  width: "100%",
+                  width: "80%",
                   padding: "clamp(0.8rem, 2vw, 1rem)",
                   borderRadius: "14px",
                   border: "1.5px solid #e9dbc7",

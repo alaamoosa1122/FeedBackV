@@ -1,10 +1,10 @@
 version: '3.8'
 
 services:
-  # Client (React App) - Production
+  # client (React App) - Production
   client:
     build:
-      context: ./Client
+              context: ./client
       dockerfile: Dockerfile
     ports:
       - "80:3000"  # Map to port 80 for production

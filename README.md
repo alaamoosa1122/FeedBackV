@@ -54,8 +54,8 @@ docker-compose up --build
 
 ### تثبيت التبعيات
 ```bash
-# Client
-cd Client
+# client
+cd client
 npm install
 
 # Server
@@ -70,7 +70,7 @@ cd server
 npm start
 
 # تشغيل الواجهة الأمامية (في terminal آخر)
-cd Client
+cd client
 npm start
 ```
 

@@ -18,7 +18,7 @@ MONGO_DATABASE=your_database_name
 # Node Environment
 NODE_ENV=production
 
-# API URL for Client
+# API URL for client
 REACT_APP_API_URL=http://localhost:3001
 ```
 
@@ -32,7 +32,7 @@ docker-compose up -d --build
 ```
 
 ### 3. الوصول للتطبيق
-- **الواجهة الأمامية (Client)**: http://localhost:3000
+- **الواجهة الأمامية (client)**: http://localhost:3000
 - **الخادم (Server)**: http://localhost:3001
 
 ### 4. إيقاف التطبيق
@@ -86,6 +86,6 @@ docker-compose down --rmi all --volumes --remove-orphans
 3. تأكد من أن قاعدة البيانات متاحة من الإنترنت
 
 ## ملاحظات مهمة
-- تأكد من تحديث عنوان API في Client إذا كنت تستخدم عنوان مختلف للخادم
+- تأكد من تحديث عنوان API في client إذا كنت تستخدم عنوان مختلف للخادم
 - في بيئة الإنتاج، استخدم متغيرات بيئية آمنة
 - تأكد من إعداد CORS بشكل صحيح في الخادم 
