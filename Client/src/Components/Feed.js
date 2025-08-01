@@ -342,7 +342,7 @@ const Feed = () => {
                   <div style={{ color: '#c00', fontWeight: 700, textAlign: 'center', marginTop: 12 }}>{submitError}</div>
                 )}
                 <FormGroup>
-                  <Label for="name" className="form-label" style={{
+                  <Label htmlFor="name" className="form-label" style={{
                     fontWeight:700,
                     color:'#ffffff',
                     marginBottom:'0.2rem',
@@ -389,7 +389,7 @@ const Feed = () => {
                   )}
                 </FormGroup>
                 <FormGroup>
-                  <Label for="number" className="form-label" style={{
+                  <Label htmlFor="number" className="form-label" style={{
                     fontWeight: 700,
                     color: '#ffffff',
                     marginBottom: '0.2rem',
@@ -449,7 +449,7 @@ const Feed = () => {
                   )}
                 </FormGroup>
                 <FormGroup>
-                  <Label for="event" className="form-label" style={{
+                  <Label htmlFor="event" className="form-label" style={{
                     fontWeight:700,
                     color:'#ffffff',
                     marginBottom:'0.3rem',
@@ -502,7 +502,7 @@ const Feed = () => {
                   )}
                 </FormGroup>
                 <FormGroup>
-                  <Label for="rating" className="form-label" style={{
+                  <Label htmlFor="rating" className="form-label" style={{
                     fontWeight:700,
                     color:'#e67e22',
                     marginBottom:'0.3rem',
@@ -550,7 +550,7 @@ const Feed = () => {
                   )}
                 </FormGroup>
                 <FormGroup>
-                  <Label for="comments" className="form-label" style={{
+                  <Label htmlFor="comments" className="form-label" style={{
                     fontWeight:700,
                     color:'#ffffff',
                     marginBottom:'0.3rem',

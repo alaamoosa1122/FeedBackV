@@ -17,7 +17,7 @@ services:
         sync: false
 
   - type: web
-    name: feedbackev-client
+    name: feedbackev
     env: static
     buildCommand: cd Client && npm install --legacy-peer-deps && npm run build
     staticPublishPath: ./Client/build
@@ -25,4 +25,4 @@ services:
       - key: NODE_VERSION
         value: 18.17.0
       - key: REACT_APP_API_URL
-        value: https://feedbackev-server.onrender.com 
+        value: http://localhost:3001 
