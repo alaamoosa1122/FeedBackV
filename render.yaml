@@ -5,7 +5,8 @@ services:
     buildCommand: |
       cd client && npm install && npm run build
       cd ../server && npm install
-    startCommand: cd server && node index.js
+    startCommand: cd server && npm start
+
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
@@ -17,3 +18,6 @@ services:
         sync: false
       - key: MONGO_DATABASE
         sync: false
+      - key: PORT
+        value: 10000
+
