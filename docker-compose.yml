@@ -4,8 +4,8 @@ services:
   # client (React App)
   client:
     build:
-              context: ./client
-    dockerfile: Dockerfile
+      context: ./client
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     depends_on:
@@ -23,10 +23,10 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - NODE_ENV=production
-      - MONGO_USERNAME=${MONGO_USERNAME}
-      - MONGO_PASSWORD=${MONGO_PASSWORD}
-      - MONGO_DATABASE=${MONGO_DATABASE}
+       PORT: 3001 
+       MONGO_USERNAME: admin
+       MONGO_PASSWORD: admin
+       MONGO_DATABASE: peerDB
     networks:
       - feedback-network
 

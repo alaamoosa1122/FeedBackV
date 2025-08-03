@@ -212,7 +212,7 @@ const Feed = () => {
      {showThankYou && (
           <div style={{
             position: 'fixed',
-            top: '80px',
+            top: '400px',
             left: '50%',
             transform: 'translateX(-50%)',
             background: '#43a047',
