@@ -27,7 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from React build
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const clientBuildPath = path.join(__dirname, '../client/build');
+const clientBuildPath = path.join(__dirname, 'build');
+const indexPath = path.join(__dirname, 'build', 'index.html');
 
 // Check if client build exists and serve it
 import fs from 'fs';
