@@ -11,7 +11,11 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://feedbackev.onrender.com'   
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-user-email', 'Content-Length'],
   credentials: true,
@@ -20,6 +24,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -128,13 +133,14 @@ app.delete("/api/events/:id", async (req, res) => {
 
 // Catch all handler: send back React's index.html file for any non-API routes
 app.get('*', (req, res) => {
-  const indexPath = path.join(__dirname, '../client/build', 'index.html');
+  const indexPath = path.join(__dirname, 'build', 'index.html'); // مسار build داخل مجلد السيرفر
   if (fs.existsSync(indexPath)) {
     res.sendFile(indexPath);
   } else {
     res.json({ message: "API Server is running. client build not found." });
   }
 });
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
