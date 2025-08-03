@@ -24,6 +24,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
+//app.use(express.static(path.join(__dirname, 'build')));
 
 
 app.use(express.json());
@@ -37,11 +38,14 @@ const indexPath = path.join(__dirname, 'build', 'index.html');
 
 // Check if client build exists and serve it
 import fs from 'fs';
+//const clientBuildPath = path.join(__dirname, 'build');
 if (fs.existsSync(clientBuildPath)) {
   app.use(express.static(clientBuildPath));
-  console.log('✅ client build found and served');
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
 } else {
-  console.log('⚠️ client build not found, serving API only');
+  console.log("⚠️ No client build found");
 }
 
 // API health check
